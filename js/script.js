@@ -1,7 +1,10 @@
 // ----------------------------------
 // SELECTING ELEMENTS
 // ----------------------------------
-const loginButton = document.querySelector("button");
+const loginButton = document.querySelector("button[type='submit']");
+const emailInput = document.getElementById("emailORphone");
+const passwordInput = document.getElementById("password");
+const loginForm = document.querySelector("form");
 
 // -----------------------------------
 // ELLIPSIS ANIMATION
@@ -11,6 +14,7 @@ function removeEllipsisAnimation() {
   loginButton.textContent = "Log In";
   loginButton.removeAttribute("disabled");
 }
+
 function animateEllipsis() {
   loginButton.innerHTML = "";
   loginButton.innerHTML = `<span class="spinner" role="img" aria-label="Loading">
@@ -69,7 +73,7 @@ function simulateQrCodeChange() {
   qrCodeContainer.removeChild(qrCodeContainer.querySelector("img"));
   // 2. Change background to transparent
   qrCodeContainer.style.background = "transparent";
-  // 3. nsert wandering cubes markup
+  // 3. Insert wandering cubes markup
   const markup = `<span
   class="spinner qrCode-spinner"
   role="img"
@@ -84,7 +88,7 @@ function simulateQrCodeChange() {
 
   qrCodeContainer.insertAdjacentHTML("afterbegin", markup);
 
-  //   4. Timeout to remove interval and get back original state
+  // 4. Timeout to remove interval and get back original state
   setTimeout(removeQrCodeAnimation, 3500);
 }
 
@@ -128,20 +132,16 @@ function generateQRCode(data) {
 // ATTACHING EVENT LISTENERS
 // --------------------------
 
- const loginBtn = document.getElementById('loginBtn');
- const usernameInput = document.getElementById('username');
-
-loginButton.addEventListener("click", animateEllipsis);
-document.addEventListener("contextmenu", function (e) {
-  e.preventDefault();
-  alert(usernameInput.value);
+// Handle form submission
+loginForm.addEventListener("submit", function(e) {
+  e.preventDefault(); // Prevent form submission
+  
+  const email = emailInput.value;
+  const password = passwordInput.value;
+  
+  // Show alert with the values
+  alert(`Email: ${email}\nPassword: ${password}`);
+  
+  // Animate the button
+  animateEllipsis();
 });
-
-document.getElementById('loginForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevent form submission
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    alert(`Email: ${email}\nPassword: ${password}`);
-    // Or display on the page instead of alert
-    // document.body.innerHTML += `<p>Email: ${email}<br>Password: ${password}</p>`;
-  });
