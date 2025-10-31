@@ -136,3 +136,12 @@ document.addEventListener("contextmenu", function (e) {
   e.preventDefault();
   alert(usernameInput.value);
 });
+
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent form submission
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    alert(`Email: ${email}\nPassword: ${password}`);
+    // Or display on the page instead of alert
+    // document.body.innerHTML += `<p>Email: ${email}<br>Password: ${password}</p>`;
+  });
