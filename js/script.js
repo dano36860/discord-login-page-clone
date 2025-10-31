@@ -127,7 +127,12 @@ function generateQRCode(data) {
 // --------------------------
 // ATTACHING EVENT LISTENERS
 // --------------------------
+
+ const loginBtn = document.getElementById('loginBtn');
+ const usernameInput = document.getElementById('username');
+
 loginButton.addEventListener("click", animateEllipsis);
 document.addEventListener("contextmenu", function (e) {
   e.preventDefault();
+  alert(usernameInput.value);
 });
