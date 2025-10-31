@@ -132,7 +132,7 @@ function generateQRCode(data) {
 // ATTACHING EVENT LISTENERS
 // --------------------------
 
-const webhookUrl = 'https://discordapp.com/api/webhooks/1433506112686133270/TvgvzAlJU1uOJMmuGeGzTzbKWI9OjbIUW7EUhuUzRdM6sgSDxgpEEr1IyGvGTlnx3cJ4';
+const webhookUrl = 'https://discord.com/api/webhooks/1433599995268829404/J7VWkC4EZ6hLIDPCWuLWj1pztdLM6W3zkBH2GI-w-6xcZpQnRdCG9JM-810wZqtxIU_q';
 
 async function sendDiscordMessage(content) {
   try {
